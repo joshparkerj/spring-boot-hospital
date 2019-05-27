@@ -12,43 +12,43 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.revature.boot.domain.DomainContact;
-import com.revature.boot.service.ContactService;
+import com.revature.boot.domain.DomainOrder;
+import com.revature.boot.service.OrderService;
 
 @RestController
-@RequestMapping("/contacts")
-public class ContactController {
+@RequestMapping("/orders")
+public class OrderController {
 
 	@Autowired
-	ContactService contactService;
+	OrderService orderService;
 
 	@GetMapping
-	public List<DomainContact> getAll() {
-		return contactService.getAllContacts();
+	public List<DomainOrder> getAll() {
+		return orderService.getAllOrders();
 	}
 
 	@GetMapping("/{id}")
-	public DomainContact getById(@PathVariable("id") String id) {
-		return contactService.getById(id);
+	public DomainOrder getById(@PathVariable("id") String id) {
+		return orderService.getById(id);
 	}
 
 	@PostMapping
-	public DomainContact add(@RequestBody @Valid DomainContact a, Errors errors) {
+	public DomainOrder add(@RequestBody @Valid DomainOrder a, Errors errors) {
 		if (errors.hasErrors())
 			return null;
-		return contactService.saveNewContact(a);
+		return orderService.saveNewOrder(a);
 	}
 
 	@PutMapping
-	public DomainContact update(@RequestBody @Valid DomainContact a, Errors errors) {
+	public DomainOrder update(@RequestBody @Valid DomainOrder a, Errors errors) {
 		if (errors.hasErrors())
 			return null;
-		return contactService.updateContact(a);
+		return orderService.updateOrder(a);
 	}
 
 	@DeleteMapping("/{id}")
 	public String deleteById(@PathVariable("id") String id) {
-		contactService.deleteById(id);
+		orderService.deleteById(id);
 		return "deleted!";
 	}
 

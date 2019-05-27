@@ -2,6 +2,8 @@ package com.revature.boot.service;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Service;
 
 import com.revature.boot.domain.DomainContact;
@@ -25,7 +27,11 @@ public class ContactService {
 	}
 
 	public void deleteById(String id) {
-		con.deleteContactById(id);
+		con.deleteById(id);
+	}
+
+	public DomainContact updateContact(@Valid DomainContact a) {
+		return con.updateContact(a);
 	}
 
 }
