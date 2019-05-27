@@ -25,11 +25,17 @@ public class ContactHelper {
 	}
 
 	public List<DomainContact> getAllContacts() {
+		return getContactsHelper("SELECT Id, FirstName, LastName, Phone, Email, Birthdate, AccountId FROM Contact");
+	}
+
+	private List<DomainContact> getContactsHelper(String queryString) {
 		List<DomainContact> contactList = new LinkedList<DomainContact>();
 		try {
-			QueryResult qr = connection
-					.query("SELECT Id, FirstName, LastName, Phone, Email, Birthdate, AccountId FROM Contact");
+			QueryResult qr = connection.query(queryString);
 			boolean done = false;
+			System.out.println("tried to get results");
+			System.out.println(qr);
+			System.out.println(qr.getSize());
 			while (qr.getSize() > 0 && !done) {
 				SObject[] records = qr.getRecords();
 				for (SObject so : records) {
@@ -96,6 +102,11 @@ public class ContactHelper {
 	public DomainContact domainContactFromContact(Contact c) {
 		return new DomainContact(c.getId(), c.getFirstName(), c.getLastName(), c.getEmail(), c.getPhone(),
 				c.getBirthdate().getTime(), c.getAccountId());
+	}
+
+	public List<DomainContact> getWorkers() {
+		return getContactsHelper(
+				"SELECT Id, FirstName, LastName, Phone, Email, Birthdate, AccountId FROM Contact WHERE AccountId = '0014P000025vEy2QAE'");
 	}
 
 }

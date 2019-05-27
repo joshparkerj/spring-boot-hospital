@@ -26,8 +26,6 @@ public class AccountHelper {
 			QueryResult qr = connection.query(
 					"SELECT Id, Name, Phone, TickerSymbol, Website, YearStarted, AnnualRevenue, Description FROM Account");
 			boolean done = false;
-			System.out.println("I made it to get all accounts.");
-			System.out.println(qr.getSize());
 			while (qr.getSize() > 0 && !done) {
 				SObject[] records = qr.getRecords();
 				for (SObject so : records) {

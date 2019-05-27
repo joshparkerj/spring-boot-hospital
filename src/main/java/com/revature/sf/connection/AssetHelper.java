@@ -47,9 +47,6 @@ public class AssetHelper {
 		SObject[] sObjects = { newAsset };
 		try {
 			SaveResult sr = connection.create(sObjects)[0];
-			System.out.println(sr);
-			System.out.println(sr.getSuccess());
-			System.out.println(sr.getId());
 			if (sr.getSuccess()) {
 				a.setId(sr.getId());
 				return a;
@@ -76,7 +73,6 @@ public class AssetHelper {
 	}
 
 	private Asset assetFromDomainAsset(DomainAsset a) {
-		System.out.println("Now trying to get asset from domain asset...");
 		Asset newAsset = new Asset();
 		newAsset.setAssetProvidedById(a.getAssetprovidedbyid());
 		newAsset.setContactId(a.getContactid());
@@ -85,7 +81,6 @@ public class AssetHelper {
 		newAsset.setParentId(a.getParentid());
 		newAsset.setRootAssetId(a.getRootassetid());
 		newAsset.setStatus(a.getStatus());
-		System.out.println(newAsset);
 		return newAsset;
 	}
 

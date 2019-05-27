@@ -154,4 +154,8 @@ public enum EnterpriseConnectionHandler {
 		}
 	}
 
+	public List<DomainContact> getWorkers() {
+		return contactHelper.getWorkers();
+	}
+
 }

@@ -34,4 +34,8 @@ public class ContactService {
 		return con.updateContact(a);
 	}
 
+	public List<DomainContact> getWorkers() {
+		return con.getWorkers();
+	}
+
 }
