@@ -26,13 +26,19 @@ public class AccountHelper {
 			QueryResult qr = connection.query(
 					"SELECT Id, Name, Phone, TickerSymbol, Website, YearStarted, AnnualRevenue, Description FROM Account");
 			boolean done = false;
+			System.out.println("I made it to get all accounts.");
+			System.out.println(qr.getSize());
 			while (qr.getSize() > 0 && !done) {
 				SObject[] records = qr.getRecords();
 				for (SObject so : records) {
 					Account a = (Account) so;
+					BigDecimal ar = null;
+					Double ardouble = a.getAnnualRevenue();
+					if (ardouble != null)
+						ar = BigDecimal.valueOf(ardouble);
 					accountList.add(
 							new DomainAccount(a.getId(), a.getName(), a.getPhone(), a.getTickerSymbol(), a.getWebsite(),
-									a.getYearStarted(), BigDecimal.valueOf(a.getAnnualRevenue()), a.getDescription()));
+									a.getYearStarted(), ar, a.getDescription()));
 				}
 				done = qr.isDone();
 			}

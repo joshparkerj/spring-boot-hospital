@@ -25,10 +25,6 @@ public enum EnterpriseConnectionHandler {
 
 	INSTANCE;
 	private EnterpriseConnection connection;
-	private String authEndPoint = "";
-	private String username = "";
-	private String password = "";
-	private String securityToken = "";
 	private ContactHelper contactHelper;
 	private AssetHelper assetHelper;
 	private AccountHelper accountHelper;
@@ -43,10 +39,10 @@ public enum EnterpriseConnectionHandler {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		this.username = props.getProperty("username");
-		this.password = props.getProperty("password");
-		this.authEndPoint = props.getProperty("endpointurl");
-		this.securityToken = props.getProperty("securitytoken");
+		String username = props.getProperty("username");
+		String password = props.getProperty("password");
+		String authEndPoint = props.getProperty("endpointurl");
+		String securityToken = props.getProperty("securitytoken");
 		try {
 			ConnectorConfig config = new ConnectorConfig();
 			config.setUsername(username);
