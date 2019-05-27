@@ -109,4 +109,9 @@ public class ContactHelper {
 				"SELECT Id, FirstName, LastName, Phone, Email, Birthdate, AccountId FROM Contact WHERE AccountId = '0014P000025vEy2QAE'");
 	}
 
+	public List<DomainContact> getPatients() {
+		return getContactsHelper(
+				"SELECT Id, FirstName, LastName, Phone, Email, Birthdate, AccountId FROM Contact WHERE AccountId = '0014P000025vEztQAE'");
+	}
+
 }

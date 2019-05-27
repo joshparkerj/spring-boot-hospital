@@ -38,4 +38,8 @@ public class ContactService {
 		return con.getWorkers();
 	}
 
+	public List<DomainContact> getPatients() {
+		return con.getPatients();
+	}
+
 }

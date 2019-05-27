@@ -31,6 +31,11 @@ public class ContactController {
 	public List<DomainContact> getWorkers() {
 		return contactService.getWorkers();
 	}
+	
+	@GetMapping("/patients")
+	public List<DomainContact> getPatients() {
+		return contactService.getPatients();
+	}
 
 	@GetMapping("/{id}")
 	public DomainContact getById(@PathVariable("id") String id) {

@@ -158,4 +158,8 @@ public enum EnterpriseConnectionHandler {
 		return contactHelper.getWorkers();
 	}
 
+	public List<DomainContact> getPatients() {
+		return contactHelper.getPatients();
+	}
+
 }
